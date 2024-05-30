@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Viewer;
 use App\Notifications\PostCreated;
 use App\Notifications\ViewerPostPublished;
+use Illuminate\Support\Collection;
 
 class NotificationService implements INotificationService
 {
@@ -15,9 +16,9 @@ class NotificationService implements INotificationService
         User::find($userId)->notify(new PostCreated($post));
     }
 
-    public function postPublished(int $userId, IPost $post): void
+    public function postPublished(Collection $userIds, IPost $post): void
     {
-        Viewer::where('user_id', $userId)->each(
+        User::whereIn('id', $userIds)->each(
             fn ($viewer) => $viewer->notify(new ViewerPostPublished($post))
         );
     }

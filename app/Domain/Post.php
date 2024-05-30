@@ -39,8 +39,8 @@ class Post implements IPost
         Collection $users
     ): void
     {
-        $notificationService->postCreated($this->authorId);
-        $notificationService->postPublished($this->authorId);
+        $notificationService->postCreated($this->authorId, $this);
+        $notificationService->postPublished($users, $this);
     }
 
     public function getKey()
