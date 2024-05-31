@@ -3,23 +3,23 @@
 namespace App\Domain;
 
 use App\Models\IPost;
-use App\Notifications\PostCreated;
 use App\Services\INotificationService;
-use Illuminate\Notifications\Notification;
+use App\Services\NotificationService;
 use Illuminate\Support\Collection;
+use Ramsey\Uuid\UuidInterface;
 
 class Post implements IPost
 {
-    private int $id;
+    private UuidInterface $id;
 
     public function __construct(
-        private readonly int $authorId,
+        private readonly UuidInterface $authorId,
         private string $title,
         private string $content,
     ) {
     }
 
-    public function getAuthorId(): int
+    public function getAuthorId(): UuidInterface
     {
         return $this->authorId;
     }
@@ -35,7 +35,7 @@ class Post implements IPost
     }
 
     public function notify(
-        INotificationService $notificationService,
+        NotificationService $notificationService,
         Collection $users
     ): void
     {

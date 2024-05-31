@@ -11,7 +11,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(
+            \App\Services\INotificationService::class,
+            \App\Services\NotificationService::class
+        );
     }
 
     /**

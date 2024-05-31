@@ -6,6 +6,7 @@ use App\Commands\CreatePostCommand;
 use App\Domain\Post;
 use App\Repositories\UserRepository;
 use App\Services\INotificationService;
+use App\Services\NotificationService;
 
 class CreatePostBetterExample
 {
@@ -26,7 +27,7 @@ class CreatePostBetterExample
         );
 
         $post->notify(
-            $this->notificationService,
+            new NotificationService(),
             $this->userRepository->getViewers($command->getAuthorId())
         );
     }
