@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Patterns;
+namespace App\Patterns\Factory;
 
-class Mojito extends CocktailFactory
+class CubaLibre extends CocktailFactory
 {
     public function glass(): Glass
     {
@@ -16,11 +16,11 @@ class Mojito extends CocktailFactory
 
     public function inside(): Inside
     {
-        return new Lemonade();
+        return new Cola();
     }
 
     public function garnish(): Garnish
     {
-        return new Mint();
+        return new Lime();
     }
 }

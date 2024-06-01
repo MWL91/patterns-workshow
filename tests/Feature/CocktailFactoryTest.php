@@ -3,7 +3,7 @@
 namespace Feature;
 
 // use Illuminate\Foundation\Testing\RefreshDatabase;
-use App\Patterns\Mojito;
+use App\Patterns\Factory\Mojito;
 use Tests\TestCase;
 
 class CocktailFactoryTest extends TestCase
@@ -12,6 +12,7 @@ class CocktailFactoryTest extends TestCase
     {
         $mojito = new Mojito();
         $mojito->mix();
-        $this->assertTrue(true);
+
+        $this->expectOutputString("Using a highball glass\nPouring rum (40ml)\nAdding lemonade\nSome mint leaves on top\n");
     }
 }

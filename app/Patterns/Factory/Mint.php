@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Patterns;
+namespace App\Patterns\Factory;
 
 class Mint implements Garnish
 {
